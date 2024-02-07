@@ -42,8 +42,8 @@ export default function Room({ params }: { params: { id: string } }) {
 		<main className="h-screen flex flex-col">
 			<Header />
 
-			<div className="h-full overflow-y-auto flex">
-				<div className="p-5 w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-5">
+			<div className="h-full overflow-y-auto flex relative">
+				<div className="p-5 w-full h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-5">
 					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
 						<video
 							className="w-full h-full"
@@ -54,17 +54,6 @@ export default function Room({ params }: { params: { id: string } }) {
 						<span className="absolute left-4 bottom-2">José Eduardo</span>
 					</div>
 
-					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
-						<video className="w-full h-full"></video>
-						<span className="absolute left-4 bottom-2">Fulano 01</span>
-					</div>
-
-					{/* outras cams */}
-
-					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
-						<video className="w-full h-full"></video>
-						<span className="absolute left-4 bottom-2">Fulano 01</span>
-					</div>
 					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
 						<video className="w-full h-full"></video>
 						<span className="absolute left-4 bottom-2">Fulano 01</span>
