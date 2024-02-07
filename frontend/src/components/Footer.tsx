@@ -23,10 +23,10 @@ export default function Footer() {
 	}).format(new Date());
 
 	return (
-		<footer className="py-6 w-full bg-black fixed bottom-0">
+		<footer className="py-3 w-full bg-black">
 			<Container>
-				<div className="grid grid-cols-3 items-center">
-					<span className="text-xl">{hours}</span>
+				<div className="flex items-center justify-center md:grid grid-cols-3">
+					<span className="hidden md:block text-xl">{hours}</span>
 
 					<div className="flex justify-center space-x-6">
 						{isMuted ? (

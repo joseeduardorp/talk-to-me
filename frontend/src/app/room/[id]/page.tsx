@@ -22,7 +22,7 @@ export default function Room({ params }: { params: { id: string } }) {
 
 			await initCamera();
 		});
-	}, [socket]);
+	}, [params.id, socket]);
 
 	const initCamera = async () => {
 		const video = await navigator.mediaDevices.getUserMedia({
@@ -39,26 +39,35 @@ export default function Room({ params }: { params: { id: string } }) {
 	};
 
 	return (
-		<main className="h-screen">
+		<main className="h-screen flex flex-col">
 			<Header />
 
-			<div className="flex h-[73%]">
-				<div className="m-3 w-full md:w-[80%]">
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-						<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
-							<video
-								className="w-full h-full"
-								autoPlay
-								playsInline
-								ref={localStream}
-							/>
-							<span className="absolute bottom-2">José Eduardo</span>
-						</div>
+			<div className="h-full overflow-y-auto flex">
+				<div className="p-5 w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-5">
+					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
+						<video
+							className="w-full h-full"
+							autoPlay
+							playsInline
+							ref={localStream}
+						/>
+						<span className="absolute left-4 bottom-2">José Eduardo</span>
+					</div>
 
-						<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
-							<video className="w-full h-full"></video>
-							<span className="absolute bottom-2">Fulano 01</span>
-						</div>
+					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
+						<video className="w-full h-full"></video>
+						<span className="absolute left-4 bottom-2">Fulano 01</span>
+					</div>
+
+					{/* outras cams */}
+
+					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
+						<video className="w-full h-full"></video>
+						<span className="absolute left-4 bottom-2">Fulano 01</span>
+					</div>
+					<div className="p-2 w-full h-full bg-gray-950 rounded-md relative">
+						<video className="w-full h-full"></video>
+						<span className="absolute left-4 bottom-2">Fulano 01</span>
 					</div>
 				</div>
 

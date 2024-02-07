@@ -3,7 +3,7 @@ import Container from './Container';
 
 export default function Header() {
 	return (
-		<header className="p-4 bg-gray-1000 ">
+		<header className="p-4 bg-gray-1000">
 			<Container>
 				<div className="flex justify-between">
 					<Image alt="Talk to Me" src="/logo.svg" width={170} height={60} />

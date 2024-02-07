@@ -6,7 +6,7 @@ export default function Home() {
 		<main className="min-h-screen flex flex-col">
 			<Header />
 
-			<div className="mx-auto w-full max-w-[580px] h-full flex-1 flex items-center justify-center">
+			<div className="flex-1 flex justify-center">
 				<FormWrapper />
 			</div>
 		</main>

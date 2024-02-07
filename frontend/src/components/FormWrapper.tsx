@@ -12,7 +12,7 @@ export function FormWrapper() {
 	};
 
 	return (
-		<Container>
+		<div className="m-10 mt-40 w-full max-w-[580px] h-full">
 			<div className="flex items-center text-center">
 				<span
 					onClick={() => handleSelectRoom('join')}
@@ -22,6 +22,7 @@ export function FormWrapper() {
 				>
 					Ingressar
 				</span>
+
 				<span
 					onClick={() => handleSelectRoom('create')}
 					className={`p-4 w-1/2 cursor-pointer ${
@@ -33,10 +34,10 @@ export function FormWrapper() {
 				</span>
 			</div>
 
-			<div className="p-10 min-w-[580px] w-full bg-secondary rounded-b-lg">
+			<div className="p-10 w-full bg-secondary rounded-b-lg">
 				<RoomSelector selectedRoom={selectedRoom} />
 			</div>
-		</Container>
+		</div>
 	);
 }
 

@@ -41,25 +41,28 @@ export default function Chat({ roomId }: { roomId: string }) {
 	}
 
 	return (
-		<aside className="m-3 px-4 pt-4 w-[20%] h-full bg-gray-900 rounded-md hidden md:block">
-			<div className="h-full space-y-3 relative">
-				{chat.map((chat, index) => (
-					<div key={index} className="p-2 bg-gray-950 rounded">
-						<div className="flex text-pink-400 space-x-2">
-							<span>{chat.username}</span>
-							<span>{chat.time}</span>
-						</div>
+		<aside className="p-4 pl-0 w-[500px] h-full hidden md:block">
+			<div className="p-4 h-full bg-gray-900 rounded-md flex flex-col gap-4">
+				<div className="h-full space-y-3 ">
+					{chat.map((chat, index) => (
+						<div key={index} className="py-2 px-3 bg-gray-950 rounded">
+							<div className="flex text-pink-400 space-x-2">
+								<span>{chat.username}</span>
+								<span>{chat.time}</span>
+							</div>
 
-						<div className="mt-2 text-sm">
-							<p>{chat.message}</p>
+							<div className="mt-2 text-sm">
+								<p>{chat.message}</p>
+							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 
-				<form className="w-full absolute bottom-2" onSubmit={sendMessage}>
+				<form className="w-full" onSubmit={sendMessage}>
 					<div className="flex relative">
 						<input
 							type="text"
+							placeholder="Mensagem"
 							ref={currentMsg}
 							className="px-3 py-2 w-full bg-gray-950 rounded-md"
 						/>
