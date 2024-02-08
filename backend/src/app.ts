@@ -32,20 +32,56 @@ class App {
 
 		socket.on('subscribe', (data) => {
 			console.log('Usuário inserido na sala:', data.roomId);
-
 			socket.join(data.roomId);
+			socket.join(data.socketId);
 
-			socket.on('chat', (data) => {
-				console.log('data:', data);
+			const roomsSession = Array.from(socket.rooms);
 
-				socket.broadcast.to(data.roomId).emit('chat', {
-					message: data.message,
+			if (roomsSession.length >= 1) {
+				socket.to(data.roomId).emit('new user', {
+					socketId: socket.id,
 					username: data.username,
-					time: data.time,
 				});
+			}
+		});
 
-				return null;
+		socket.on('newUserStart', (data) => {
+			console.log('Novo usuário entrou na sala', data);
+
+			socket.to(data.to).emit('newUserStart', {
+				sender: data.sender,
 			});
+		});
+
+		socket.on('sdp', (data) => {
+			socket.to(data.to).emit('sdp', {
+				description: data.description,
+				sender: data.sender,
+			});
+		});
+
+		socket.on('ice candidates', (data) => {
+			socket.to(data.to).emit('ice candidates', {
+				candidate: data.candidate,
+				sender: data.sender,
+			});
+		});
+
+		socket.on('chat', (data) => {
+			console.log('data:', data);
+
+			socket.broadcast.to(data.roomId).emit('chat', {
+				message: data.message,
+				username: data.username,
+				time: data.time,
+			});
+
+			return null;
+		});
+
+		socket.on('disconnect', () => {
+			console.log('Socket desconectado', socket.id);
+			socket.disconnect();
 		});
 	}
 }
